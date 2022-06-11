@@ -26,10 +26,10 @@ export default {
     // console.log("mounted");
     window.axios
       .get("http://127.0.0.1:8000/api/posts")
-      .then((results) => {
-        if (results.status === 200 && results.data.success) {
-          this.posts = results.data.results;
-          console.log(results);
+      .then(({ status, data }) => {
+        if (status === 200 && data.success) {
+          this.posts = data.results;
+          //   console.log(results);
         }
       })
       .catch((err) => {
