@@ -4,8 +4,10 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import HomeComponent from './pages/HomeComponent';
-import BlogComponent from './pages/BlogComponent';
+import HomePage from './pages/HomePage';
+import BlogPage from './pages/BlogPage';
+import NotFoundPage from './pages/NotFoundPage';
+import ContactsPage from './pages/ContactsPage';
 
 const router = new VueRouter({
     mode: 'history',
@@ -13,12 +15,22 @@ const router = new VueRouter({
         {
             path: '/',
             name: 'home',
-            component: HomeComponent
+            component: HomePage
         },
         {
             path: '/blog',
             name: 'blog',
-            component: BlogComponent
+            component: BlogPage
+        },
+        {
+            path: '/contatti',
+            name: 'contatti',
+            component: ContactsPage
+        },
+        {
+            path: '/*',
+            name: 'notFound',
+            component: NotFoundPage
         },
 
     ],
