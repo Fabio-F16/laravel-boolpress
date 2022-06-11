@@ -18,10 +18,14 @@ class PostController extends Controller
     {
             // nell' Api\PostController trasformo i dati in file json
         $posts = Post::all();
+
             // per restituire i posts con tabella associata category
         // $posts = Post::with('category')->get();
+
             // per visualizzare solo una parte dei dati, pagina per pagina
+            // l'argomento sono quanti item restituisce
         // $posts = Post::paginate(1);
+
             // creo array associativo per avere una proprietà success
         $result = ['results' => $posts, 'success' => true];
         return response()->json($result);
