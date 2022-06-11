@@ -1985,9 +1985,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PostCardComponent",
-  props: ["title", "cover"]
+  props: ["title", "cover", "content"],
+  computed: {
+    trimmedContent: function trimmedContent() {
+      var shortContent = this.content.length > 100 ? this.content.substring(0, 100) : this.content;
+      return shortContent;
+    }
+  }
 });
 
 /***/ }),
@@ -2002,6 +2010,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PostCardComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostCardComponent */ "./resources/js/components/PostCardComponent.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -2056,10 +2068,12 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     // console.log("mounted");
-    window.axios.get("http://127.0.0.1:8000/api/posts").then(function (results) {
-      if (results.status === 200 && results.data.success) {
-        _this.posts = results.data.results;
-        console.log(results);
+    window.axios.get("http://127.0.0.1:8000/api/posts").then(function (_ref) {
+      var status = _ref.status,
+          data = _ref.data;
+
+      if (status === 200 && data.success) {
+        _this.posts = data.results; //   console.log(results);
       }
     })["catch"](function (err) {
       console.log(err);
@@ -37787,8 +37801,13 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("h2", { staticClass: "mt-2" }, [_vm._v(_vm._s(_vm.title))]),
+    _vm._v(" "),
     _c("img", { attrs: { src: "storage/" + _vm.cover, alt: _vm.title } }),
-    _vm._v("\n  " + _vm._s(_vm.title) + "\n"),
+    _vm._v(" "),
+    _c("p", { staticClass: "mt-2" }, [_vm._v(_vm._s(_vm.trimmedContent))]),
+    _vm._v(" "),
+    _c("hr"),
   ])
 }
 var staticRenderFns = []
@@ -37821,7 +37840,11 @@ var render = function () {
         { key: index },
         [
           _c("PostCardComponent", {
-            attrs: { title: post.title, cover: post.cover },
+            attrs: {
+              title: post.title,
+              cover: post.cover,
+              content: post.content,
+            },
           }),
         ],
         1
