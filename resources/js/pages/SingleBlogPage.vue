@@ -5,6 +5,18 @@
       <h2 class="mt-2">{{ post.title }}</h2>
       <img :src="'/storage/' + post.cover" :alt="post.title" />
       <p class="mt-2">{{ post.content }}</p>
+      <div>
+        <ul>
+          <h4>Tags:</h4>
+          <li v-for="tag in post.tags" :key="tag.id">
+            {{ tag.name }}
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4>Categoria:</h4>
+        <p>{{ post.category.name }}</p>
+      </div>
     </div>
     <div v-else>Caricamento in corso</div>
     <router-link :to="{ name: 'blog' }"> Torna ai post </router-link>
@@ -34,5 +46,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+li {
+  list-style-type: none;
+}
 </style>
