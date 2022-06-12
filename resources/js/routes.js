@@ -35,7 +35,7 @@ const router = new VueRouter({
         }
         ,
         {
-            path: '/blog/:id',
+            path: '/blog/:slug',
             name: 'single-blog',
             component: SingleBlogPage
         },

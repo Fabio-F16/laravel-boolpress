@@ -30,9 +30,9 @@ export default {
     return { post: undefined };
   },
   mounted() {
-    const id = this.$route.params.id;
+    const slug = this.$route.params.slug;
     window.axios
-      .get("http://127.0.0.1:8000/api/posts/" + id)
+      .get("http://127.0.0.1:8000/api/posts/" + slug)
       .then(({ status, data }) => {
         if (status === 200 && data.success) {
           this.post = data.results;
