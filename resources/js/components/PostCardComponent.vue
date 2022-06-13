@@ -2,7 +2,7 @@
   <div>
     <h2 class="mt-2">{{ title }}</h2>
     <img :src="'storage/' + cover" :alt="title" />
-    <p class="mt-2">{{ trimmedContent }}</p>
+    <p class="mt-2">{{ trimmedContent }}...</p>
     <router-link :to="{ name: 'single-blog', params: { slug } }">
       Visualizza Post
     </router-link>

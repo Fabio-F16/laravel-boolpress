@@ -30,6 +30,7 @@ export default {
     return { post: undefined };
   },
   mounted() {
+    //   per recuperare il params inviato dal link della route da PostCardComponent
     const slug = this.$route.params.slug;
     window.axios
       .get("http://127.0.0.1:8000/api/posts/" + slug)

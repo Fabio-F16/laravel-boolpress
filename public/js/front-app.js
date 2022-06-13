@@ -2220,6 +2220,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    //   per recuperare il params inviato dal link della route da PostCardComponent
     var slug = this.$route.params.slug;
     window.axios.get("http://127.0.0.1:8000/api/posts/" + slug).then(function (_ref) {
       var status = _ref.status,
@@ -38542,7 +38543,9 @@ var render = function () {
       _vm._v(" "),
       _c("img", { attrs: { src: "storage/" + _vm.cover, alt: _vm.title } }),
       _vm._v(" "),
-      _c("p", { staticClass: "mt-2" }, [_vm._v(_vm._s(_vm.trimmedContent))]),
+      _c("p", { staticClass: "mt-2" }, [
+        _vm._v(_vm._s(_vm.trimmedContent) + "..."),
+      ]),
       _vm._v(" "),
       _c(
         "router-link",
