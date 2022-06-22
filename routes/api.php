@@ -22,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // la rotta restituisce l'api del Postcontroller alla funzione index
 Route::get('/posts', 'Api\PostController@index')->name('posts.index');
 Route::get('/posts/{slug}', 'Api\PostController@show')->name('posts.show');
+// per gestire le email che riceviamo
+Route::post('/contacts', 'Api\ContactsController@store')->name('contacts');
